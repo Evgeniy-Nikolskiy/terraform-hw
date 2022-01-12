@@ -7,13 +7,13 @@ variable "create_folder" {
 variable "yc_cloud_id" {
   description = "Cloud id for deplot resources"
   type        = string
-  default     = ""
+  default     = "b1gm53rrhubfia3qpp2g"
 }
 
 variable "yc_folder_id" {
   description = "Folder id for deplot resources"
   type        = string
-  default     = ""
+  default     = "b1gg49lefs6j79btf13t"
 }
 
 variable "name" {

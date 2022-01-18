@@ -2,17 +2,17 @@ version: 3
 automerge: true
 delete_source_branch_on_merge: true
 projects:
-- name: terraform-hw
+- name: terraform-hw-prod
   dir: .
   workspace: prod
   terraform_version: v1.1.2
   delete_source_branch_on_merge: true
   autoplan:
-    when_modified: ["*.tf", "../modules/**.tf"]
+    when_modified: ["*.tf", "~/terraform-hw/hw74/terraform/demo/**.tf"]
     enabled: true
   apply_requirements: []
-  workflow: workflow-prod
-- name: terraform-yc-stage
+  workflow: wf-prod
+- name: terraform-hw-stage
   dir: .
   workspace: stage
   terraform_version: v1.1.2
@@ -21,9 +21,9 @@ projects:
     when_modified: ["*.tf", "~/terraform-hw/hw74/terraform/demo/**.tf"]
     enabled: true
   apply_requirements: []
-  #workflow: workflow-prod
+  workflow: wf-stage
 workflows:
-  workflow-prod:
+  wf-prod:
     plan:
       steps:
       - run: terraform workspace select -no-color prod
@@ -36,7 +36,7 @@ workflows:
       - run: terraform workspace select -no-color prod
       - apply:
           extra_args: ["-lock=false"]
-  workflow-stage:
+  wf-stage:
     plan:
       steps:
       - run: terraform workspace select -no-color stage

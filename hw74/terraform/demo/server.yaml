@@ -15,7 +15,7 @@ repos:
 
   # workflow sets the workflow for all repos that match.
   # This workflow must be defined in the workflows section.
-  workflow: workflow-prod
+  workflow: wf-prod
 
   # allowed_overrides specifies which keys can be overridden by this repo in
   # its atlantis.yaml file.
@@ -23,7 +23,7 @@ repos:
   allowed_overrides: [workflow]
   # allowed_workflows specifies which workflows the repos that match
   # are allowed to select.
-  allowed_workflows: ["workflow-stage", "workflow-prod"]
+  allowed_workflows: ["stage", "prod"]
 
   # allow_custom_workflows defines whether this repo can define its own
   # workflows. If false (default), the repo can only use server-side defined
@@ -39,7 +39,6 @@ repos:
   #  - run: my-pre-workflow-hook-command arg1
 
   # id can also be an exact match.
-#- id: https://github.com/dotsenkois/terraform-yc
 
 # workflows lists server-side custom workflows
 workflows:
@@ -53,7 +52,7 @@ workflows:
       steps:
       #- run: terraform workspace select -no-color stage
       - apply
-  workflow-prod:
+  wf-prod:
       plan:
         steps:
        # - run: terraform workspace select -no-color prod

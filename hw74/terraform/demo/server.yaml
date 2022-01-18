@@ -42,7 +42,7 @@ repos:
 
 # workflows lists server-side custom workflows
 workflows:
-  workflow-stage:
+  wf-stage:
     plan:
       steps:
       #- run: terraform workspace select -no-color stage

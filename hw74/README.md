@@ -2,6 +2,6 @@
 
 ### Ответ к задаче 1
 
+![подпункт_1](https://raw.githubusercontent.com/Evgeniy-Nikolskiy/terraform-hw/main/hw74/assets/741.png)  
 
-
-![подпункт_1](https://raw.githubusercontent.com/Evgeniy-Nikolskiy/terraform-hw/hw74/assets/741.png)  
+### Ответ к задаче 2

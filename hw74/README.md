@@ -10,3 +10,5 @@
 [atlantis.yaml](https://raw.githubusercontent.com/Evgeniy-Nikolskiy/terraform-hw/main/hw74/terraform/aws_ec2/atlantis.yaml)  
 
 ### Ответ к задаче 3
+
+[server.yaml](https://raw.githubusercontent.com/Evgeniy-Nikolskiy/terraform-hw/main/hw74/terraform/aws_ec2/main.tf)

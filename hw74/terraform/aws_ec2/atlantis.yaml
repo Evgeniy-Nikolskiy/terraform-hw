@@ -1,0 +1,54 @@
+version: 3
+automerge: true
+delete_source_branch_on_merge: true
+projects:
+- name: terraform-hw-prod
+  dir: .
+  workspace: prod
+  terraform_version: v1.1.2
+  delete_source_branch_on_merge: true
+  autoplan:
+    when_modified: ["*.tf", "~/terraform-hw/hw74/terraform/demo/**.tf"]
+    enabled: true
+  apply_requirements: []
+  workflow: wf-prod
+- name: terraform-hw-stage
+  dir: .
+  workspace: stage
+  terraform_version: v1.1.2
+  delete_source_branch_on_merge: true
+  autoplan:
+    when_modified: ["*.tf", "~/terraform-hw/hw74/terraform/demo/**.tf"]
+    enabled: true
+  apply_requirements: []
+  workflow: wf-stage
+workflows:
+  wf-prod:
+    plan:
+      steps:
+      - run: terraform workspace select -no-color prod
+      - init:
+          extra_args: ["-lock=false"]
+      - plan:
+          extra_args: ["-lock=false"]
+    apply:
+      steps:
+      - run: terraform workspace select -no-color prod
+      - apply:
+          extra_args: ["-lock=false"]
+  wf-stage:
+    plan:
+      steps:
+      - run: terraform workspace select -no-color stage
+      - init:
+          extra_args: ["-lock=false"]
+      - plan:
+          extra_args: ["-lock=false"]
+    apply:
+      steps:
+      - run: terraform workspace select -no-color stage
+      - apply:
+          extra_args: ["-lock=false"]
+allowed_regexp_prefixes:
+- dev/
+- staging/
